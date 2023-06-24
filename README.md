@@ -1,1 +1,1 @@
-##My Javascript learning journey
+## My Javascript learning journey
