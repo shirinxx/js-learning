@@ -62,3 +62,16 @@ console.log('9' -  '5'); // predict 4
 console.log(typeof('19' - '13' + '17')); // predict 617
 console.log('123' < 57); // predict false
 console.log(arg1); // predict 1143 typeof number
+
+// Equality Operators: == vs. ===
+const numNeighbours = Number(prompt('How many neighbour countries does your country have?'));
+
+if( numNeighbours === 1 ){
+    console.log('Only 1 border!');
+}
+else if( numNeighbours > 1 ){
+    console.log('More than 1 border');
+}
+else{
+    console.log('No borders');
+}
