@@ -42,14 +42,23 @@ const description = country + ' is in ' + continent + ', and its ' + population 
 console.log(description);
 
 
-//Strings and Template Literals
+// Strings and Template Literals
 const description2 = `${country} is in ${continent}, and its ${population} million people speak ${language}`;
 console.log(description2)
 
 
-//Taking Decisions: if / else Statements
+// Taking Decisions: if / else Statements
 if(population > 33) {
     console.log(`${country}'s population is above average`);
 }else{
     console.log(`${country}'s population is ${33 - population} million below average`);
 }
+
+
+// Type Conversion and Coercion
+const arg1 = 5 + 6 + '4' + 9 - 4 - 2;
+
+console.log('9' -  '5'); // predict 4
+console.log(typeof('19' - '13' + '17')); // predict 617
+console.log('123' < 57); // predict false
+console.log(arg1); // predict 1143 typeof number
