@@ -6,6 +6,6 @@ if (scoreDolphins > scoreKoalas) {
 } else if (scoreKoalas > scoreDolphins){
     console.log('Koalas win the trophy');
 }
-else{
+else if(scoreDolphins === scoreKoalas){
     console.log('Both win the trophy');
 }
