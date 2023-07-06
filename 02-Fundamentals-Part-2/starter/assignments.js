@@ -67,3 +67,6 @@ const describePopulation = (country ,population) => {
 }
 
 console.log(describePopulation("China", 1441));
+console.log(describePopulation("USA", 850));
+console.log(describePopulation("Norway", 10));
+
