@@ -60,3 +60,10 @@ console.log(`Turkey: ${turkeyPercentage3}%`);
 console.log(`USA: ${usaPercentage3}%`);
 console.log(`Norway: ${norwayPercentage3}%`);
 
+// Functions Calling Other Functions
+
+const describePopulation = (country ,population) => {
+    return `${country} has ${population} million people, which is about ${percentageOfWorld1(population)} of the world.`;
+}
+
+console.log(describePopulation("China", 1441));
