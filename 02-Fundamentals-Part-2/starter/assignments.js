@@ -70,3 +70,22 @@ console.log(describePopulation("China", 1441));
 console.log(describePopulation("USA", 850));
 console.log(describePopulation("Norway", 10));
 
+// Introduction to Arrays
+
+const populations = new Array(10, 88, 331, 5);
+console.log(populations.length == 4 );
+
+const percentages = new Array(percentageOfWorld1(10), percentageOfWorld1(1441), percentageOfWorld1(850), percentageOfWorld1(5));
+console.log(percentages);
+
+// Basic Array Operationss
+const neighbours = ['Russia', 'Iran', 'Armenia', 'Georgia', 'Turkey'];
+neighbours.push('Utopia');
+console.log(neighbours);
+
+neighbours.pop();
+console.log(neighbours);
+
+if(neighbours.includes('Germany')){
+    console.log('Probably not a central European country :D');
+}
