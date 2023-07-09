@@ -27,3 +27,16 @@ const yearsUntilRetirement = (birthYear, firstName) => {
     return `${firstName} will retire in ${retirement} years`;
 }
 console.log(yearsUntilRetirement(1999, 'Shirin'));
+
+
+// Dot vs Brecket Notation
+
+const jonas = {
+    firstName: 'Shirin',
+    lastName: 'Shukurov',
+    age: 24,
+    job: 'engineer',
+    friends: ['Joni', 'Merkel', 'Hans'],
+};
+
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}.`);
