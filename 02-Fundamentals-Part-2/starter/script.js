@@ -34,9 +34,9 @@ console.log(yearsUntilRetirement(1999, 'Shirin'));
 const jonas = {
     firstName: 'Shirin',
     lastName: 'Shukurov',
+    birthYear: 1999,
     age: 24,
     job: 'engineer',
     friends: ['Joni', 'Merkel', 'Hans'],
 };
 
-console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}.`);
