@@ -89,3 +89,34 @@ console.log(neighbours);
 if(neighbours.includes('Germany')){
     console.log('Probably not a central European country :D');
 }
+
+// Introduction to Objects
+const myCountry = {
+    country: 'Russia',
+    capital: 'Moscow',
+    language: 'russian',
+    population: 143,
+    neighbours: ['Azerbaijan', 'Belarus', 'China', 'Estonia', 'Finland', 'Georgia', 'Kazakhstan', 'North Korea', 'Latvia', 'Lithuania', 'Mongolia', 'Norway', 'Poland', 'Ukraine'],
+
+    // Object Methods
+    describe: function (){
+        console.log(`${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`);
+    },
+
+    checkIsland: function () {
+        this.isIsland = this.neighbours.length === 0 ? true : false;
+    },
+
+}
+
+// Dot vs. Bracket Notation
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`);
+
+myCountry.population += 2;
+myCountry['population'] -= 2;
+console.log(myCountry.population);
+
+// Object Methods
+myCountry.describe();
+myCountry.checkIsland();
+console.log(myCountry);
