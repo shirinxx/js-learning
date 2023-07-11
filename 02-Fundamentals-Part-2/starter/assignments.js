@@ -75,7 +75,7 @@ console.log(describePopulation("Norway", 10));
 const populations = new Array(10, 88, 331, 5);
 console.log(populations.length == 4 );
 
-const percentages = new Array(percentageOfWorld1(10), percentageOfWorld1(1441), percentageOfWorld1(850), percentageOfWorld1(5));
+const percentages = new Array(percentageOfWorld1(10), percentageOfWorld1(88), percentageOfWorld1(331), percentageOfWorld1(5));
 console.log(percentages);
 
 // Basic Array Operationss
@@ -120,3 +120,43 @@ console.log(myCountry.population);
 myCountry.describe();
 myCountry.checkIsland();
 console.log(myCountry);
+
+// Iteration: The for Loop
+
+for(let i = 1; i <= 50; i++){
+    console.log(`Voter number ${i} is currently voting`);
+}
+
+// Looping Arrays, Breaking and Continuing
+const percentages2 = [];
+
+for(let i = 0; i < populations.length; i++){
+    percentages2.push(percentageOfWorld1(populations[i]));
+    console.log(percentages[i], percentages2[i]);
+    if (percentages[i] !== percentages2[i]){
+        console.log('Failed');
+    }
+}
+
+// Looping Backwards and Loops in Loops
+const listOfNeighbours = [['Canada', 'Mexico'], ['Spain'], ['Norway', 'Sweden', 'Russia']];
+
+for (let i = 0; i < listOfNeighbours.length; i++){
+    for(let n = 0; n < listOfNeighbours[i].length; n++){
+        console.log(`Neighbour: ${listOfNeighbours[i][n]}`);
+    }
+}
+
+// The while loop
+
+const percentages3 = [];
+
+let i = 0;
+while(i < populations.length){
+    percentages3.push(percentageOfWorld1(populations[i]));
+    console.log(percentages[i], percentages3[i]);
+    if (percentages[i] !== percentages3[i]){
+        console.log('Failed');
+    }
+    i++;
+}
