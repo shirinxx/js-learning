@@ -24,3 +24,38 @@ function calcAge(birthYear) {
 
 const firstName = 'Shirin';
 calcAge(1995);
+
+// Hoisting in practice
+
+console.log(me); //prints undefined
+// console.log(job); //prints error
+// console.log(year); // prints error
+
+var me = 'Shirin';
+let job = 'Student';
+const year = 1999;
+
+console.log(addExp); // prints undefined
+
+console.log(addDecl(2, 6)); // it's hoisted
+// console.log(addExp(2, 6)); // calls undefined heres
+
+function addDecl(a, b) {
+    return a + b;
+}
+
+var addExp = function (a, b) {
+    return a + b;
+};
+
+const addArr = (a, b) => a + b;
+
+// Example
+console.log(cardNums);
+if (!cardNums) deleteShoppingCart();
+
+var cardNums = 10;
+
+function deleteShoppingCart() {
+    console.log('All cards deleted from db');
+}
