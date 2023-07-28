@@ -59,3 +59,30 @@ var cardNums = 10;
 function deleteShoppingCart() {
     console.log('All cards deleted from db');
 }
+
+// console.log(this); // prints window object
+
+const calcAge2 = function (birthYear) {
+    const age = 2023 - birthYear;
+    console.log(age);
+    console.log(this);
+};
+
+calcAge2(1999);
+
+const calcAge3 = birthYear => {
+    const age = 2023 - birthYear;
+    console.log(age);
+    console.log(this);
+};
+
+calcAge3(2000);
+
+const adam = {
+    firstName: 'Adam',
+    lastName: 'Shukurov',
+    birthYear: 1999,
+    calcAge: function () {
+        console.log();
+    },
+};
