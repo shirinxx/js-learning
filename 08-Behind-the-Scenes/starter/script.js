@@ -59,3 +59,32 @@ var cardNums = 10;
 function deleteShoppingCart() {
     console.log('All cards deleted from db');
 }
+
+
+const funcExpress = function (){
+    console.log(this);
+}
+funcExpress();
+
+const funcArrow = () =>{
+    console.log(this);
+}
+funcArrow();
+
+const adam = {
+    birthYear: 1999,
+    calcAge: function (){
+        console.log(2023 - this.birthYear);
+    },
+};
+
+adam.calcAge();
+
+const filip = {
+    birthYear: 1995,
+};
+
+filip.calcAge = adam.calcAge;
+
+filip.calcAge();
+
