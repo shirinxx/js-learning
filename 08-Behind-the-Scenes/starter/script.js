@@ -83,6 +83,58 @@ const adam = {
     lastName: 'Shukurov',
     birthYear: 1999,
     calcAge: function () {
-        console.log();
+        console.log(this);
     },
 };
+
+adam.calcAge();
+
+
+// Primitive types vs reference types
+
+let age = 30;
+let oldAge = age;
+
+age = 27;
+
+console.log(age);
+console.log(oldAge);
+
+const ramsey = {
+    firstName: "Ramsey",
+    age: 30,
+};
+
+const gordon = ramsey;
+
+gordon.age = 45;
+
+console.log(ramsey.age);
+console.log(gordon.age);
+
+
+const mary = {
+    firstName: 'Mary',
+    lastName: 'Jane',
+    age: 25,
+    family: ['Joni', 'Merkel'],
+};
+
+// const maryMarried = mary; 
+// maryMarried.lastName = 'Parker';
+// console.log(mary.lastName);
+// console.log(maryMarried.lastName); // Both returns Parker as lastname
+
+// Object assign
+
+const maryMarried2 = Object.assign({}, mary);
+
+maryMarried2.lastName = 'Parker';
+
+console.log(mary.lastName); // Returns Jane
+console.log(maryMarried2.lastName); // Returns Parker
+
+maryMarried2.family.push('Moni');
+
+console.log(mary);
+console.log(maryMarried2);
