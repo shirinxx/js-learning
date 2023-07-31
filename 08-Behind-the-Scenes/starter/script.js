@@ -84,6 +84,21 @@ const adam = {
     birthYear: 1999,
     calcAge: function () {
         console.log(this);
+
+const funcExpress = function (){
+    console.log(this);
+}
+funcExpress();
+
+const funcArrow = () =>{
+    console.log(this);
+}
+funcArrow();
+
+const adam = {
+    birthYear: 1999,
+    calcAge: function (){
+        console.log(2023 - this.birthYear);
     },
 };
 
@@ -138,3 +153,42 @@ maryMarried2.family.push('Moni');
 
 console.log(mary);
 console.log(maryMarried2);
+const filip = {
+    birthYear: 1995,
+};
+
+filip.calcAge = adam.calcAge;
+
+filip.calcAge();
+
+const ali = {
+    firstName: 'Ali',
+    birthYear: 1999,
+    calcAge: function(){
+        console.log(this);
+        console.log(this.birthYear);
+
+        const self = this;
+        const funcExp = function(){
+            console.log(`Hey born at ${self.birthYear}`);
+        };
+        funcExp();
+
+        const funcArrow = () =>{
+            console.log(`Hey arrow born at ${this.birthYear}`);
+        }
+        funcArrow();
+    },
+}
+
+ali.calcAge();
+
+
+const testArgFunc = function (a, b){
+    console.log(a, b);
+
+    console.log(arguments);
+}
+
+testArgFunc(8, 9);
+testArgFunc(11, 12, 13, 15);
