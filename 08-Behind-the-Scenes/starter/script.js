@@ -137,7 +137,7 @@ const calcAge3 = birthYear => {
 
 calcAge3(2000);
 
-const adam = {
+const adam2 = {
     firstName: 'Adam',
     lastName: 'Shukurov',
     birthYear: 1999,
@@ -146,7 +146,7 @@ const adam = {
     },
 };
 
-adam.calcAge();
+adam2.calcAge();
 
 
 // Primitive types vs reference types
