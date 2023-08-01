@@ -11,6 +11,9 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
   openingHours: {
     thu: {
@@ -27,3 +30,43 @@ const restaurant = {
     },
   },
 };
+
+let [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+
+// Swapping variables
+[main, secondary] = [secondary, main];
+
+console.log(main, secondary);
+
+// Destructor from function
+const [order1, order2] = restaurant.order(1, 2);
+
+console.log(order1, order2);
+
+// Destructuring objects
+
+const {
+  name: restName,
+  openingHours: openings,
+  openingHours: { sat: saturday },
+  categories: catgs,
+} = restaurant;
+
+console.log(restName, openings, catgs, saturday);
+
+// Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+
+console.log(menu, starters);
+
+//Mutating values
+
+let a = 55;
+let b = 12;
+
+const mutateObj = { a: 5, b: 6 };
+
+({ a, b } = mutateObj);
+
+console.log(a, b);
