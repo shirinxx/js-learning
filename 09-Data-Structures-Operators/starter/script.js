@@ -15,6 +15,16 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
+  orderDelivery: function ({ address, mainMenu, starterMenu, time }) {
+    console.log(
+      `Your ${this.starterMenu[starterMenu]} and ${this.mainMenu[mainMenu]} order will be delivered to ${address} at this time ${time}`
+    );
+  },
+
+  orderPizza: function (ing1, ing2, ing3) {
+    console.log(`Here is your pizza with ${ing1}, ${ing2} and ${ing3}`);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -30,6 +40,13 @@ const restaurant = {
     },
   },
 };
+
+restaurant.orderDelivery({
+  time: '20:00',
+  mainMenu: 0,
+  address: 'Azadlig prospekti',
+  starterMenu: 0,
+});
 
 let [main, , secondary] = restaurant.categories;
 console.log(main, secondary);
@@ -70,3 +87,45 @@ const mutateObj = { a: 5, b: 6 };
 ({ a, b } = mutateObj);
 
 console.log(a, b);
+
+// Nested objects
+
+const {
+  openingHours: {
+    fri: { open: fridayOpen, close: fridayClose },
+  },
+} = restaurant;
+
+console.log(fridayOpen, fridayClose);
+
+const arr = [1, 2, 5];
+console.log(...arr);
+
+const newArr = [8, 9, ...arr];
+console.log(newArr);
+
+const newMainMenu = ['Kabab', ...restaurant.mainMenu];
+console.log(newMainMenu);
+
+const newMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(newMenu);
+
+const strName = 'Shirin';
+console.log(...strName);
+
+const ingridents = [
+  // prompt('Enter ing1 for pizza:'),
+  // prompt('Enter ing2 for pizza:'),
+  // prompt('Enter ing3 for pizza:'),
+];
+
+restaurant.orderPizza(...ingridents);
+
+//Spreding Objects
+const newRestaurant = {
+  ...restaurant,
+  foundIn: 1986,
+  name: 'Nenemin restorani',
+};
+
+console.log(newRestaurant);
