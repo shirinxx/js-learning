@@ -15,6 +15,12 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
+  orderDelivery: function ({ address, mainMenu, starterMenu, time }) {
+    console.log(
+      `Your ${this.starterMenu[starterMenu]} and ${this.mainMenu[mainMenu]} order will be delivered to ${address} at this time ${time}`
+    );
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -30,6 +36,13 @@ const restaurant = {
     },
   },
 };
+
+restaurant.orderDelivery({
+  time: '20:00',
+  mainMenu: 0,
+  address: 'Azadlig prospekti',
+  starterMenu: 0,
+});
 
 let [main, , secondary] = restaurant.categories;
 console.log(main, secondary);
@@ -70,3 +83,13 @@ const mutateObj = { a: 5, b: 6 };
 ({ a, b } = mutateObj);
 
 console.log(a, b);
+
+// Nested objects
+
+const {
+  openingHours: {
+    fri: { open: fridayOpen, close: fridayClose },
+  },
+} = restaurant;
+
+console.log(fridayOpen, fridayClose);
