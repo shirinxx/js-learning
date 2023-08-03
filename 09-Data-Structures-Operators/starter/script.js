@@ -173,3 +173,18 @@ const x = [1, 2, 3, 4, 5];
 add(...x);
 
 restaurant.orderPasta('tomat', 'et', 'qatiq');
+
+// AND vs OR short-circuit
+
+//OR
+console.log('John' || 0); // John
+console.log(undefined || 0); // 0
+console.log(5 || 1); // 5
+console.log(null || 0 || 'ali' || undefined); // ali
+
+//AND
+console.log('Merkel' && 15); // 15
+console.log('Merkel' && 0); // 0
+console.log(null && 0); // null
+
+restaurant.orderPizza && restaurant.orderPizza('alma', 'xiyar', 'pomidor');
