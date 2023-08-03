@@ -25,6 +25,11 @@ const restaurant = {
     console.log(`Here is your pizza with ${ing1}, ${ing2} and ${ing3}`);
   },
 
+  orderPasta: function (mainIng, ...otherIng) {
+    console.log(mainIng);
+    console.log(otherIng);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -129,3 +134,42 @@ const newRestaurant = {
 };
 
 console.log(newRestaurant);
+
+//Spreading Arrays bec of RIGHT SIDE OF THE '='
+const spreadArr = [9, 8, 7, ...[5, 6]];
+console.log(spreadArr);
+
+//Rest pattern bec LEFT SIDE OF THE '='\
+const [catItalian, , catVegeterian, , ...allMenu] = [
+  ...restaurant.categories,
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+
+console.log(catItalian);
+console.log(catVegeterian);
+console.log(allMenu);
+
+// Rest param on objects
+const { sat: saturdays, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+console.log(saturdays);
+
+// Rest param Functions
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+
+add(2, 5);
+add(2, 5, 7);
+add(2, 5, 7, 9);
+
+const x = [1, 2, 3, 4, 5];
+
+add(...x);
+
+restaurant.orderPasta('tomat', 'et', 'qatiq');
