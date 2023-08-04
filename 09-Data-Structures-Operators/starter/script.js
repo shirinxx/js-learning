@@ -188,3 +188,17 @@ console.log('Merkel' && 0); // 0
 console.log(null && 0); // null
 
 restaurant.orderPizza && restaurant.orderPizza('alma', 'xiyar', 'pomidor');
+
+// NULLISH ???
+
+// restaurant.numGuests = 0;
+const guest2 = restaurant.numGuests ?? 10; // 10 (restaurant.numGuests is undefined)
+console.log(guest2);
+
+restaurant.numGuests = 15;
+const guest = restaurant.numGuests ?? 10; // 15
+console.log(guest);
+
+restaurant.numGuests = 0;
+const guest1 = restaurant.numGuests ?? 10; // 0
+console.log(guest1);
