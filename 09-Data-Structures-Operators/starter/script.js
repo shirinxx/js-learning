@@ -2,55 +2,72 @@
 
 // Data needed for a later exercise
 const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+    '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+const openingHours2 = {
+    thu: {
+        open: 12,
+        close: 22,
+    },
+    fri: {
+        open: 11,
+        close: 23,
+    },
+    sat: {
+        open: 0, // Open 24 hours
+        close: 24,
+    },
+};
 
 // Data needed for first part of the section
 const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
-  orderDelivery: function ({ address, mainMenu, starterMenu, time }) {
-    console.log(
-      `Your ${this.starterMenu[starterMenu]} and ${this.mainMenu[mainMenu]} order will be delivered to ${address} at this time ${time}`
-    );
-  },
-
-  orderPizza: function (ing1, ing2, ing3) {
-    console.log(`Here is your pizza with ${ing1}, ${ing2} and ${ing3}`);
-  },
-
-  orderPasta: function (mainIng, ...otherIng) {
-    console.log(mainIng);
-    console.log(otherIng);
-  },
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
+    name: 'Classico Italiano',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+    order(starterIndex, mainIndex) {
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
     },
-    fri: {
-      open: 11,
-      close: 23,
+
+    orderDelivery: function ({ address, mainMenu, starterMenu, time }) {
+        console.log(
+            `Your ${this.starterMenu[starterMenu]} and ${this.mainMenu[mainMenu]} order will be delivered to ${address} at this time ${time}`
+        );
     },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
+
+    orderPizza: function (ing1, ing2, ing3) {
+        console.log(`Here is your pizza with ${ing1}, ${ing2} and ${ing3}`);
     },
-  },
+
+    orderPasta: function (mainIng, ...otherIng) {
+        console.log(mainIng);
+        console.log(otherIng);
+    },
+    openingHours2,
+    openingHours: {
+        thu: {
+            open: 12,
+            close: 22,
+        },
+        fri: {
+            open: 11,
+            close: 23,
+        },
+        sat: {
+            open: 0, // Open 24 hours
+            close: 24,
+        },
+    },
 };
 
+console.log(restaurant);
+
 restaurant.orderDelivery({
-  time: '20:00',
-  mainMenu: 0,
-  address: 'Azadlig prospekti',
-  starterMenu: 0,
+    time: '20:00',
+    mainMenu: 0,
+    address: 'Azadlig prospekti',
+    starterMenu: 0,
 });
 
 let [main, , secondary] = restaurant.categories;
@@ -69,10 +86,10 @@ console.log(order1, order2);
 // Destructuring objects
 
 const {
-  name: restName,
-  openingHours: openings,
-  openingHours: { sat: saturday },
-  categories: catgs,
+    name: restName,
+    openingHours: openings,
+    openingHours: { sat: saturday },
+    categories: catgs,
 } = restaurant;
 
 console.log(restName, openings, catgs, saturday);
@@ -96,9 +113,9 @@ console.log(a, b);
 // Nested objects
 
 const {
-  openingHours: {
-    fri: { open: fridayOpen, close: fridayClose },
-  },
+    openingHours: {
+        fri: { open: fridayOpen, close: fridayClose },
+    },
 } = restaurant;
 
 console.log(fridayOpen, fridayClose);
@@ -119,18 +136,18 @@ const strName = 'Shirin';
 console.log(...strName);
 
 const ingridents = [
-  // prompt('Enter ing1 for pizza:'),
-  // prompt('Enter ing2 for pizza:'),
-  // prompt('Enter ing3 for pizza:'),
+    // prompt('Enter ing1 for pizza:'),
+    // prompt('Enter ing2 for pizza:'),
+    // prompt('Enter ing3 for pizza:'),
 ];
 
 restaurant.orderPizza(...ingridents);
 
 //Spreding Objects
 const newRestaurant = {
-  ...restaurant,
-  foundIn: 1986,
-  name: 'Nenemin restorani',
+    ...restaurant,
+    foundIn: 1986,
+    name: 'Nenemin restorani',
 };
 
 console.log(newRestaurant);
@@ -141,9 +158,9 @@ console.log(spreadArr);
 
 //Rest pattern bec LEFT SIDE OF THE '='\
 const [catItalian, , catVegeterian, , ...allMenu] = [
-  ...restaurant.categories,
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
+    ...restaurant.categories,
+    ...restaurant.mainMenu,
+    ...restaurant.starterMenu,
 ];
 
 console.log(catItalian);
@@ -157,11 +174,11 @@ console.log(saturdays);
 
 // Rest param Functions
 const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
-  console.log(sum);
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+    console.log(sum);
 };
 
 add(2, 5);
@@ -202,3 +219,29 @@ console.log(guest);
 restaurant.numGuests = 0;
 const guest1 = restaurant.numGuests ?? 10; // 0
 console.log(guest1);
+
+console.log(allMenu);
+for (const item of allMenu) console.log(item);
+
+for (const [i, el] of allMenu.entries()) {
+    console.log(`${i + 1}: ${el} `);
+}
+
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open); // if openingHours exists then mon
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+    // console.log(day);
+    const statusRest = restaurant.openingHours[day]?.open ?? 'is closed';
+    console.log(`On ${day} restaurant ${statusRest}`);
+}
+console.log(restaurant.openingHours);
+
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exists');
+console.log(restaurant.order1?.(0, 1) ?? 'Method does not exists'); //not exists
+
+const user = [{ name: 'Shirin', email: 'test@gmail.com' }];
+
+console.log(user[1].name ?? 'User not exists');
