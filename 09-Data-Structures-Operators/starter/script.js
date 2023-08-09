@@ -250,14 +250,14 @@ console.log(user[0]?.name ?? 'User not exists');
 
 const keysHours = Object.keys(restaurant.openingHours);
 console.log(keysHours);
-for(const i of keysHours){
-  console.log(i);
+for (const i of keysHours) {
+    console.log(i);
 }
 
 console.log(Object.values(restaurant.openingHours));
 
 const entrHours = Object.entries(restaurant.openingHours);
 console.log(entrHours); // Both of them
-for(const [keys, val] of entrHours){
-  console.log(keys, val);
+for (const [keys, val] of entrHours) {
+    console.log(keys, val);
 }
