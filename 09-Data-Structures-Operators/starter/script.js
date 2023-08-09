@@ -261,3 +261,26 @@ console.log(entrHours); // Both of them
 for (const [keys, val] of entrHours) {
     console.log(keys, val);
 }
+
+// Maps
+
+const orderSet = new Set(['Pizza', 'Pasta', 'Pasta', 'Kabab', 'Pizza']);
+console.log(orderSet);
+console.log(new Set('Pizza'));
+
+console.log(orderSet.has('Pizza')); //true
+console.log(orderSet.has('Plov')); //false
+
+console.log(orderSet.size);
+
+orderSet.add('Dolma');
+orderSet.add('Dolma');
+console.log(orderSet);
+
+//delete
+orderSet.delete('Pasta');
+// orderSet.clear();
+console.log(orderSet);
+
+const orderArr = [...orderSet];
+console.log(orderArr);
