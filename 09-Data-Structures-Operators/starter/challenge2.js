@@ -40,8 +40,8 @@ const game = {
 };
 
 // #1
-for(const [i, player] of game.scored.entries()){
-    console.log(`Goal ${i+1}: ${player}`);
+for (const [i, player] of game.scored.entries()) {
+    console.log(`Goal ${i + 1}: ${player}`);
 }
 
 // #2
@@ -49,5 +49,21 @@ let sum = 0;
 for (const iterator of Object.values(game.odds)) {
     console.log(iterator);
     sum += iterator;
-} 
-console.log(sum/3);
+}
+console.log(sum / 3);
+
+// #3
+for (const [key, value] of Object.entries(game.odds)) {
+    // console.log(key, value);
+    const status = key === `x` ? `draw` : `victory ${game[key]}`;
+    // console.log(status);
+    console.log(`Odd of ${status}: ${value}`);
+}
+
+// #4
+const scorers = {};
+for (const goal of game.scored) {
+    console.log(goal);
+    scorers[goal] ? scorers[goal]++ : (scorers[goal] = 1);
+}
+console.log(scorers);
