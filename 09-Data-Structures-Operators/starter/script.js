@@ -337,9 +337,9 @@ for (const [key, value] of question) {
     }
 }
 
-const userAnswr = Number(prompt(question.get('question')));
+// const userAnswr = Number(prompt(question.get('question')));
 
-console.log(question.get(question.get('answer') === userAnswr));
+// console.log(question.get(question.get('answer') === userAnswr));
 
-// convert maps to arrays
-console.log(...question);
+// // convert maps to arrays
+// console.log(...question);
