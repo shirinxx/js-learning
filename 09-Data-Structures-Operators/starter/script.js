@@ -284,3 +284,62 @@ console.log(orderSet);
 
 const orderArr = [...orderSet];
 console.log(orderArr);
+
+const rest = new Map();
+rest.set('name', 'Nenemin Tendiri');
+
+console.log(rest.set(1, 'Baku, Genclik'));
+rest.set('categories', ['Bulka', 'Qogal', 'Perashki', 'Simit', 'Hotdog']);
+
+rest.set(2, 'Baku, Nerimanaov')
+    .set(3, 'Sumqayit, Bulvar')
+    .set('open', 9)
+    .set('close', 21)
+    .set(true, 'We are open:D')
+    .set(false, 'We are closed');
+
+console.log(rest.get(true));
+console.log(rest.get(1));
+console.log(rest.has(1));
+rest.delete(3);
+// rest.clear();
+console.log(rest.size);
+
+rest.set([1, 3], 'test');
+console.log(rest);
+const arrMap = [1, 3];
+rest.set(arrMap, 'test');
+console.log(rest.get(arrMap));
+console.log(rest.get([1, 3])); //undefined
+
+const question = new Map([
+    ['question', 'What is the best programming language?'],
+    [1, 'C'],
+    [2, 'Python'],
+    [3, 'Javascript'],
+    ['answer', 3],
+    [true, 'Correct'],
+    [false, 'Try again'],
+]);
+
+console.log(question);
+
+console.log(Object.entries(openingHours2));
+
+const hoursMap = new Map(Object.entries(openingHours2));
+console.log(hoursMap);
+console.log(hoursMap.get('fri'));
+
+console.log(question.get('question'));
+for (const [key, value] of question) {
+    if (typeof key === 'number') {
+        console.log('Answer ' + key + ': ' + value);
+    }
+}
+
+const userAnswr = Number(prompt(question.get('question')));
+
+console.log(question.get(question.get('answer') === userAnswr));
+
+// convert maps to arrays
+console.log(...question);
