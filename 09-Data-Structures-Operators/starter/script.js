@@ -343,3 +343,31 @@ for (const [key, value] of question) {
 
 // // convert maps to arrays
 // console.log(...question);
+
+const airline = 'Buta Airways';
+const plane = 'T920';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log(plane[3]);
+
+console.log('T920'[3]);
+
+console.log(airline.indexOf('Airways'));
+console.log(airline.lastIndexOf('a'));
+
+console.log(airline.slice(0, 4));
+console.log(airline.slice(0, airline.indexOf(' ')));
+
+console.log(airline.slice(0, -1));
+
+const checkMiddleSeat = function (seat) {
+    // B and E are middle seats
+    const s = seat.slice(-1);
+    if (s === 'B' || s === 'E') {
+        console.log('Middle seats');
+    } else {
+        console.log('Lucky bastard');
+    }
+};
