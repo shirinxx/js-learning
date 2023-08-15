@@ -378,3 +378,87 @@ checkMiddleSeat('11E');
 
 console.log(typeof new String('Herkel')); //object
 console.log(typeof new String('Herkel').slice(-1)); //string
+
+const newAirline = 'BUTa AIrlineS';
+console.log(newAirline.toLocaleLowerCase());
+console.log(newAirline.toUpperCase());
+
+const firstName = 'shiRiN';
+const lowerFirstName = firstName.toLocaleLowerCase();
+const fixedFirstName =
+    lowerFirstName[0].toUpperCase() + lowerFirstName.slice(1);
+console.log(fixedFirstName);
+
+const email = 'shirin@mail.com';
+const loginEmail = 'Shirin@Mail.com     \n';
+
+const normalizedEmail = loginEmail.trim().toLowerCase();
+console.log(normalizedEmail);
+
+const priceEng = '30,5£';
+const priseUS = priceEng.replace('£', '$').replace(',', '.');
+console.log(priseUS);
+
+const announcement =
+    'Ladies and gentlemen please approach to door 24. Boarding door 24.';
+
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+
+console.log(announcement.replaceAll(/door/g, 'gate'));
+
+const planeA = 'Buta Airways A980N';
+console.log(planeA.startsWith('Buta '));
+console.log(planeA.startsWith('Butas '));
+console.log(planeA.includes('Air'));
+console.log(planeA.includes('A98'));
+
+const checkBuggage = function (items) {
+    if (
+        items.toLowerCase().includes('gun') ||
+        items.toLowerCase().includes('knife')
+    ) {
+        console.log('You are in trouble');
+    } else {
+        console.log('Welcome aboard');
+    }
+};
+
+checkBuggage('I have a Knife in my bag');
+checkBuggage('I have a book and some clothess');
+checkBuggage('Got some food and gun for protection');
+
+console.log('little+cat+drinks+milk'.split('+'));
+
+const [firstName2, lastName2] = 'Shirin Shukurov'.split(' ');
+const newName = ['Mr.', firstName2, lastName2].join(' ');
+
+console.log(newName);
+
+const capitalizeName = function (names) {
+    const sepNames = names.split(' ');
+    const finalNames = [];
+    for (const name of sepNames) {
+        // finalNames.push(name[0].toUpperCase() + name.slice(1));
+        finalNames.push(name.replace(name[0], name[0].toUpperCase()));
+    }
+    console.log(finalNames.join(' '));
+};
+
+capitalizeName('shirin shukurov');
+capitalizeName('jessica morty sanches');
+
+//padding
+
+const msg = 'Buy some milk';
+console.log(msg.padStart(20, '*'));
+console.log(msg.padEnd(30, '*'));
+
+const maskCreditCard = function (cardNumber) {
+    const str = cardNumber + '';
+    const masked = str.slice(-4);
+    return masked.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(15446468468464646));
+console.log(maskCreditCard('146565656565656565'));
