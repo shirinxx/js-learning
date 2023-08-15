@@ -371,3 +371,10 @@ const checkMiddleSeat = function (seat) {
         console.log('Lucky bastard');
     }
 };
+
+checkMiddleSeat('11A');
+checkMiddleSeat('11B');
+checkMiddleSeat('11E');
+
+console.log(typeof new String('Herkel')); //object
+console.log(typeof new String('Herkel').slice(-1)); //string
