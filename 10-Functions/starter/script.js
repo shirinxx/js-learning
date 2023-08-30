@@ -106,6 +106,12 @@ const ryanAir = {
     bookings: [],
 };
 
+const butaAir = {
+    airline: 'ButaAir',
+    iataCode: 'BA',
+    bookings: [],
+};
+
 const book = wizzAir.book;
 
 book.call(ryanAir, 456, 'Shirin Shukurov');
@@ -119,3 +125,43 @@ book.apply(ryanAir, flightData);
 
 console.log(wizzAir);
 console.log(ryanAir);
+
+// Bind Method
+
+const bookBA = book.bind(butaAir);
+const bookWA566 = book.bind(wizzAir, 566);
+const bookRA = book.bind(ryanAir);
+
+bookBA(456, 'Steave Robs');
+console.log(butaAir);
+
+bookWA566('Roman Abramovic');
+console.log(wizzAir);
+
+wizzAir.planes = 300;
+wizzAir.buyPlane = function () {
+    console.log(this);
+    this.planes++;
+    console.log(this.planes);
+};
+
+wizzAir.buyPlane();
+document
+    .querySelector('.buy')
+    .addEventListener('click', wizzAir.buyPlane.bind(wizzAir));
+
+// Partial Appliacation
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 100));
+
+const addTaxAz = addTax.bind(null, 0.18);
+console.log(addTaxAz(100));
+
+const addTaxFunc = function (rate) {
+    return function (value) {
+        return value + rate * value;
+    };
+};
+
+const addTaxAZ2 = addTaxFunc(0.18);
+console.log(addTaxAZ2(100));
