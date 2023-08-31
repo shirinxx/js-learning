@@ -10,12 +10,36 @@ const poll = {
 // #1
 poll.registerNewAnswer = function () {
     // const question = Math.trunc(Number());
-    // const question = prompt(`${this.question}\n${this.options.join('\n')}`);
-    // if (question != '')
-    // question =
-    // if (question >= 0 && question <= 3) {
-    //     console.log(question);
-    // }
+    const question = prompt(
+        `${this.question}\n${this.options.join('\n')}`
+    ).trim();
+    if (question != '') {
+        const answer = Math.trunc(Number(question));
+        if (answer >= 0 && answer <= 3) {
+            // console.log(question);
+            this.answers[answer]++;
+            // console.log(this.answers);
+            poll.displayResults();
+            poll.displayResults('string');
+        }
+    }
 };
 
-poll.registerNewAnswer();
+// #2
+document
+    .querySelector('.poll')
+    .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// poll.registerNewAnswer();
+
+// #3
+poll.displayResults = function (type = 'array') {
+    if (type === 'string') {
+        console.log(`Poll results are ${this.answers.join(',')}`);
+    } else if (type === 'array') {
+        console.log(this.answers);
+    }
+};
+
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
