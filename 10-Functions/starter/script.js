@@ -165,3 +165,72 @@ const addTaxFunc = function (rate) {
 
 const addTaxAZ2 = addTaxFunc(0.18);
 console.log(addTaxAZ2(100));
+
+// IIFE functions
+const runOnce = function () {
+    console.log('Will run 1 time');
+};
+
+runOnce();
+
+(function () {
+    console.log('You wont see me again');
+})();
+
+(() => {
+    console.log('This one too');
+})();
+
+{
+    const privateOne = 1;
+    var notPrivate = 5;
+}
+
+console.log(notPrivate);
+
+//Closures
+const secureBooking = function () {
+    let passCount = 0;
+
+    return function () {
+        passCount++;
+        console.log(`${passCount} is number of Passengers`);
+    };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
+
+//More closure examples
+let f;
+
+const g = function () {
+    const a = 10;
+
+    f = function () {
+        console.log(a * 2);
+    };
+};
+
+g();
+f();
+
+const boardPassengers = function (n, wait) {
+    // const perGroup = n / 3;
+
+    setTimeout(function () {
+        console.log(
+            `Boarding started with ${n} passengers in 3 groups. Each group with ${perGroup} passengers`
+        );
+    }, wait * 1000);
+
+    console.log(`Will start boarding in ${wait} seconds`);
+};
+
+boardPassengers(100, 3);
+const perGroup = 1000;
