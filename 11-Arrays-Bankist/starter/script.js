@@ -116,39 +116,58 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 // console.log('shirin'.at(-1));
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-// for (const mov of movements) {
-for (const [i, mov] of movements.entries()) {
-    if (mov > 0) {
-        console.log(`Movement ${i + 1}: You deposited ${mov}`);
-    } else {
-        console.log(`Movement ${i + 1}: You withdraw ${Math.abs(mov)}`);
-    }
-}
+// // for (const mov of movements) {
+// for (const [i, mov] of movements.entries()) {
+//     if (mov > 0) {
+//         console.log(`Movement ${i + 1}: You deposited ${mov}`);
+//     } else {
+//         console.log(`Movement ${i + 1}: You withdraw ${Math.abs(mov)}`);
+//     }
+// }
 
-console.log(`----FOR EACH METHOD----`);
+// console.log(`----FOR EACH METHOD----`);
 
-movements.forEach((mov, i, arr) => {
-    if (mov > 0) {
-        console.log(`Movement ${i + 1}: You deposited ${mov}`);
-    } else {
-        console.log(`Movement ${i + 1}: You withdraw ${Math.abs(mov)}`);
-    }
-});
+// movements.forEach((mov, i, arr) => {
+//     if (mov > 0) {
+//         console.log(`Movement ${i + 1}: You deposited ${mov}`);
+//     } else {
+//         console.log(`Movement ${i + 1}: You withdraw ${Math.abs(mov)}`);
+//     }
+// });
 
-const currencies = new Map([
-    ['USD', 'United States dollar'],
-    ['EUR', 'Euro'],
-    ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//     ['USD', 'United States dollar'],
+//     ['EUR', 'Euro'],
+//     ['GBP', 'Pound sterling'],
+// ]);
 
-currencies.forEach((value, key, map) => {
-    console.log(`${key}: ${value}`);
-});
+// currencies.forEach((value, key, map) => {
+//     console.log(`${key}: ${value}`);
+// });
 
-const currenciesSet = new Set(['USD', 'EUR', 'GBP', 'EUR']);
+// const currenciesSet = new Set(['USD', 'EUR', 'GBP', 'EUR']);
 
-currenciesSet.forEach((value, _, set) => {
-    console.log(`${_}: ${value}`);
-});
+// currenciesSet.forEach((value, _, set) => {
+//     console.log(`${_}: ${value}`);
+// });
+
+const displayMovements = function (movements) {
+    containerMovements.innerHTML = '';
+    movements.forEach((mov, i) => {
+        const type = mov > 0 ? 'deposit' : 'withdrawal';
+        const html = `
+            <div class="movements__row">
+                <div class="movements__type movements__type--${type}">${
+            i + 1
+        } ${type}</div>
+                <div class="movements__value">${mov}</div>
+            </div>
+        `;
+
+        containerMovements.insertAdjacentHTML('afterbegin', html);
+    });
+};
+
+displayMovements(account1.movements);
