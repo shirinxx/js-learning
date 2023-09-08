@@ -71,7 +71,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //     ['GBP', 'Pound sterling'],
 // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -171,3 +171,23 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+const euroToUSD = 1.1;
+
+const movementsUSD = movements.map(mov => mov * euroToUSD);
+// console.log(movements);
+// console.log(movementsUSD);
+
+const usernameCreate = function (accArr) {
+    accArr.forEach(acc => {
+        acc.userName = acc.owner
+            .toLowerCase()
+            .split(' ')
+            .map(el => el[0])
+            .join('');
+        console.log(acc.userName);
+    });
+};
+
+usernameCreate(accounts);
+console.log(accounts);
