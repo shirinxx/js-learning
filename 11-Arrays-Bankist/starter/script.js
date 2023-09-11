@@ -191,3 +191,38 @@ const usernameCreate = function (accArr) {
 
 usernameCreate(accounts);
 console.log(accounts);
+
+const calcPrintBalance = function (movements) {
+    const balance = movements.reduce((acc, mov) => acc + mov, 0);
+    labelBalance.textContent = `${balance} EURO`;
+};
+
+calcPrintBalance(account1.movements);
+
+//Filter Method
+const deposits = movements.filter(mov => mov > 0);
+console.log(deposits);
+
+const withdraws = movements.filter(mov => mov < 0);
+console.log(withdraws);
+
+//Reduce Method
+console.log(movements);
+
+const balance = movements.reduce((acc, mov, i, arr) => {
+    console.log(acc);
+    return acc + mov;
+}, 0);
+
+console.log(balance);
+
+// Maxiumum value wirh Reduce
+const maxValue = movements.reduce((maxVal, mov) => {
+    console.log(`maxVal:${maxVal} mov:${mov}`);
+    if (mov > maxVal) {
+        return mov;
+    } else {
+        return maxVal;
+    }
+}, movements[0]);
+console.log(maxValue);
