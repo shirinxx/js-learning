@@ -226,3 +226,27 @@ const maxValue = movements.reduce((maxVal, mov) => {
     }
 }, movements[0]);
 console.log(maxValue);
+
+const calcDisplaySummary = function (movements) {
+    const income = movements
+        .filter(mov => mov > 0)
+        .reduce((sum, mov) => sum + mov, 0);
+    console.log(income);
+    labelSumIn.textContent = `${income}€`;
+
+    const outcome = movements
+        .filter(move => move < 0)
+        .reduce((sum, mov) => sum + mov, 0);
+    console.log(outcome);
+    labelSumOut.textContent = `${Math.abs(outcome)}€`;
+
+    const interest = movements
+        .filter(mov => mov > 0)
+        .map(mov => (mov * 1.2) / 100)
+        .filter(int => int >= 1)
+        .reduce((sum, int) => sum + int, 0);
+    console.log(interest);
+    labelSumInterest.textContent = `${interest}€`;
+};
+
+calcDisplaySummary(account1.movements);
