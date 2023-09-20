@@ -170,7 +170,7 @@ const displayMovements = function (movements) {
     });
 };
 
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
 const euroToUSD = 1.1;
 
@@ -197,7 +197,7 @@ const calcPrintBalance = function (movements) {
     labelBalance.textContent = `${balance} EURO`;
 };
 
-calcPrintBalance(account1.movements);
+// calcPrintBalance(account1.movements);
 
 //Filter Method
 const deposits = movements.filter(mov => mov > 0);
@@ -250,3 +250,40 @@ const calcDisplaySummary = function (movements) {
 };
 
 calcDisplaySummary(account1.movements);
+//Find method
+console.log(movements.find(mov => mov < 0)); // First withdrawal
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
+let accForOf;
+for (const acc of accounts) {
+    if (acc.owner === 'Jessica Davis') {
+        accForOf = acc;
+    }
+}
+console.log(accForOf);
+
+let currentAccount;
+// Login function
+btnLogin.addEventListener('click', e => {
+    e.preventDefault();
+
+    currentAccount = accounts.find(
+        acc => acc.userName === inputLoginUsername.value
+    );
+    if (currentAccount?.pin === Number(inputLoginPin.value)) {
+        // console.log(currentAccount);
+        labelWelcome.textContent = `Welcome back, ${
+            currentAccount.owner.split(' ')[0]
+        }`;
+        containerApp.style.opacity = 100;
+        //Display Movements
+        displayMovements(currentAccount.movements);
+
+        //Display Balance
+        calcPrintBalance(currentAccount.movements);
+
+        //Display Summary
+    }
+});
