@@ -162,7 +162,7 @@ const displayMovements = function (movements) {
                 <div class="movements__type movements__type--${type}">${
             i + 1
         } ${type}</div>
-                <div class="movements__value">${mov}</div>
+                <div class="movements__value">${mov}€</div>
             </div>
         `;
 
@@ -227,29 +227,29 @@ const maxValue = movements.reduce((maxVal, mov) => {
 }, movements[0]);
 console.log(maxValue);
 
-const calcDisplaySummary = function (movements) {
-    const income = movements
+const calcDisplaySummary = function (acc) {
+    const income = acc.movements
         .filter(mov => mov > 0)
         .reduce((sum, mov) => sum + mov, 0);
     console.log(income);
     labelSumIn.textContent = `${income}€`;
 
-    const outcome = movements
+    const outcome = acc.movements
         .filter(move => move < 0)
         .reduce((sum, mov) => sum + mov, 0);
     console.log(outcome);
     labelSumOut.textContent = `${Math.abs(outcome)}€`;
 
-    const interest = movements
+    const interest = acc.movements
         .filter(mov => mov > 0)
-        .map(mov => (mov * 1.2) / 100)
+        .map(mov => (mov * acc.interestRate) / 100)
         .filter(int => int >= 1)
         .reduce((sum, int) => sum + int, 0);
     console.log(interest);
     labelSumInterest.textContent = `${interest}€`;
 };
 
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 //Find method
 console.log(movements.find(mov => mov < 0)); // First withdrawal
 
@@ -273,6 +273,9 @@ btnLogin.addEventListener('click', e => {
         acc => acc.userName === inputLoginUsername.value
     );
     if (currentAccount?.pin === Number(inputLoginPin.value)) {
+        inputLoginUsername.value = '';
+        inputLoginPin.value = '';
+        inputLoginPin.blur();
         // console.log(currentAccount);
         labelWelcome.textContent = `Welcome back, ${
             currentAccount.owner.split(' ')[0]
@@ -285,5 +288,6 @@ btnLogin.addEventListener('click', e => {
         calcPrintBalance(currentAccount.movements);
 
         //Display Summary
+        calcDisplaySummary(currentAccount);
     }
 });
