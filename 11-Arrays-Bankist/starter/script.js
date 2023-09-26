@@ -318,3 +318,21 @@ btnTransfer.addEventListener('click', e => {
         inputTransferTo.blur();
     }
 });
+
+btnClose.addEventListener('click', e => {
+    e.preventDefault();
+    if (
+        inputCloseUsername.value === currentAccount.userName &&
+        Number(inputClosePin.value) === currentAccount.pin
+    ) {
+        inputCloseUsername.value = inputClosePin.value = '';
+        inputClosePin.blur();
+
+        const index = accounts.findIndex(
+            acc => acc.userName === currentAccount.userName
+        );
+        accounts.splice(index, 1);
+        // console.log(accounts);
+        containerApp.style.opacity = 0;
+    }
+});
