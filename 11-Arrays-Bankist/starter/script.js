@@ -296,6 +296,7 @@ const updateUI = function (acc) {
     calcDisplaySummary(acc);
 };
 
+//Money Transfer
 btnTransfer.addEventListener('click', e => {
     e.preventDefault();
 
@@ -319,6 +320,7 @@ btnTransfer.addEventListener('click', e => {
     }
 });
 
+//Close account
 btnClose.addEventListener('click', e => {
     e.preventDefault();
     if (
@@ -334,5 +336,22 @@ btnClose.addEventListener('click', e => {
         accounts.splice(index, 1);
         // console.log(accounts);
         containerApp.style.opacity = 0;
+    }
+});
+
+//Get loan
+
+btnLoan.addEventListener('click', e => {
+    e.preventDefault();
+
+    const amount = Number(inputLoanAmount.value);
+
+    if (
+        amount > 0 &&
+        currentAccount.movements.some(mov => mov >= amount * 0.1)
+    ) {
+        currentAccount.movements.push(amount);
+        inputLoanAmount.value = '';
+        updateUI(currentAccount);
     }
 });
