@@ -153,9 +153,11 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //     console.log(`${_}: ${value}`);
 // });
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
+    let finMoves = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
     containerMovements.innerHTML = '';
-    movements.forEach((mov, i) => {
+    finMoves.forEach((mov, i) => {
         const type = mov > 0 ? 'deposit' : 'withdrawal';
         const html = `
             <div class="movements__row">
@@ -380,3 +382,22 @@ const overAllBalance2 = accounts
     .flat()
     .reduce((acc, mov) => acc + mov);
 console.log(overAllBalance2);
+
+// Sorting
+const owners = ['Jack', 'James', 'Nick', 'Bella'];
+owners.sort();
+console.log(owners);
+
+const movs = [11, 45, 890, -120, 4556, 120, -950];
+// movs.sort();
+// console.log(movs);  //[-120, -950, 11, 120, 45, 4556, 890]
+
+movs.sort((a, b) => a - b);
+console.log(movs);
+
+let sorted = false;
+btnSort.addEventListener('click', e => {
+    e.preventDefault();
+    displayMovements(currentAccount.movements, !sorted);
+    sorted = !sorted;
+});
