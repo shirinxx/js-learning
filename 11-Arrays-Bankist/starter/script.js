@@ -359,3 +359,24 @@ btnLoan.addEventListener('click', e => {
 //Every method
 console.log(movements.every(mov => mov > 0));
 console.log(account4.movements.every(mov => mov > 3));
+
+//  Flat and Flatmap
+const arr4 = [[4, 6, 7], 9, 10];
+console.log(arr4);
+console.log(arr4.flat());
+
+const arr5 = [[1, [2, 3]], 4, 5, [6, 7]];
+console.log(arr5.flat());
+console.log(arr5.flat(2));
+
+const accountMovement = accounts.map(acc => acc.movements);
+const allMov = accountMovement.flat();
+const overAllBalance = allMov.reduce((acc, mov) => acc + mov);
+console.log(overAllBalance);
+
+//Chained
+const overAllBalance2 = accounts
+    .map(acc => acc.movements)
+    .flat()
+    .reduce((acc, mov) => acc + mov);
+console.log(overAllBalance2);
