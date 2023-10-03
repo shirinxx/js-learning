@@ -401,3 +401,43 @@ btnSort.addEventListener('click', e => {
     displayMovements(currentAccount.movements, !sorted);
     sorted = !sorted;
 });
+
+// Filling Arrays + Fill method
+console.log([1, 2, 3, 4, 5, 6]);
+console.log(new Array(1, 2, 3, 4, 5));
+
+const x = new Array(6);
+console.log(x);
+
+const arr6 = new Array(7);
+
+console.log(x.map(() => 5)); // returns empty
+
+console.log(x.fill(5));
+
+console.log(arr6.fill(5, 0, 2)); // [5, 5, empty × 5]
+
+// Array.from
+const y = Array.from({ length: 8 }, (_, i) => i + 1);
+console.log(y);
+
+const z = Array.from({ length: 6 }, () => 4);
+console.log(z);
+
+const rndmDice = Array.from({ length: 100 }, (_, i) =>
+    Math.trunc(Math.random() * 6 + 1)
+);
+
+console.log(rndmDice);
+
+//NodeList to Array
+labelBalance.addEventListener('click', () => {
+    const movementsUI = Array.from(
+        document.querySelectorAll('.movements__value'),
+        el => Number(el.textContent.replace('€', ''))
+    );
+    console.log(movementsUI);
+
+    const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+    console.log(movementsUI2);
+});
