@@ -251,3 +251,26 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+console.log(23 === 23.0);
+
+console.log(0.1 + 0.2);
+
+console.log(Number('23'));
+console.log(+'23');
+
+console.log(Number.parseInt('30px', 10));
+console.log(Number.parseInt('e34'));
+
+console.log(Number.parseInt('  2.5rem  '));
+console.log(Number.parseFloat(' 3.5rem  '));
+
+console.log(Number.isNaN(23)); //false
+console.log(Number.isNaN('45')); //false
+console.log(Number.isNaN(+'45')); //false
+console.log(Number.isNaN(+'45x')); //true
+console.log(Number.isNaN(24 / 0)); //false
+
+console.log(Number.isFinite(24)); //true
+console.log(Number.isFinite('24')); //false
+console.log(Number.isFinite(+'20x')); //false
+console.log(Number.isFinite(23 / 0)); //false
