@@ -94,7 +94,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -111,12 +111,12 @@ const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out.toFixed(2))}€`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -126,7 +126,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -206,7 +206,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor(Number(inputLoanAmount.value));
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
@@ -274,3 +274,39 @@ console.log(Number.isFinite(24)); //true
 console.log(Number.isFinite('24')); //false
 console.log(Number.isFinite(+'20x')); //false
 console.log(Number.isFinite(23 / 0)); //false
+
+// Math and rounding
+console.log(Math.sqrt(25));
+console.log(25 ** (1 / 2));
+console.log(8 ** (1 / 3));
+
+console.log(Math.max(12, 67, 34, 2, 44, '100', 77));
+console.log(Math.max(12, 67, 34, 2, 44, '100px', 77));
+
+console.log(Math.min(12, 67, 34, 2, 44, 77));
+
+console.log(Math.PI * Number.parseInt('10px') ** 2);
+console.log(Math.trunc(Math.random() * 6) + 1);
+
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+console.log(randomInt(5, 9));
+
+//Rounding Integers
+console.log(Math.round(25.3));
+console.log(Math.round(25.9));
+
+console.log(Math.ceil(25.9));
+console.log(Math.ceil(25.1));
+
+console.log(Math.floor(25.1));
+console.log(Math.floor(25.1));
+
+console.log(Math.trunc(-34.7));
+console.log(Math.floor(-34.7));
+
+console.log((2.7).toFixed(0));
+console.log((3.678).toFixed(1));
+console.log((2.7).toFixed(4));
+console.log(+(2.7).toFixed(2));
