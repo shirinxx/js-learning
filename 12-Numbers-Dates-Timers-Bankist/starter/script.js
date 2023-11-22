@@ -26,7 +26,7 @@ const account1 = {
     '2023-10-16T10:51:36.790Z',
   ],
   currency: 'EUR',
-  locale: 'pt-PT', // de-DE
+  locale: 'en-GB', // de-DE
 };
 
 const account2 = {
@@ -109,8 +109,13 @@ const displayMovements = function (acc, sort = false) {
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
+    const formattedMov = new Intl.NumberFormat(acc.locale, {
+      style: 'currency',
+      currency: 'USD',
+    }).format(mov);
+
     const date = new Date(acc.movementsDates[i]);
-    const movDate = formatDate(date);
+    const movDate = new Intl.DateTimeFormat(acc.locale).format(date);
 
     const html = `
       <div class="movements__row">
@@ -118,7 +123,7 @@ const displayMovements = function (acc, sort = false) {
       i + 1
     } ${type}</div>
         <div class="movements__date">${movDate}</div>
-        <div class="movements__value">${mov.toFixed(2)}€</div>
+        <div class="movements__value">${formattedMov}</div>
       </div>
     `;
 
@@ -175,6 +180,23 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogoutTimer = () => {
+  let time = 3;
+
+  setInterval(() => {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    labelTimer.textContent = `${min}:${sec}`;
+    if (time === 0) {
+      labelWelcome.textContent = `Login to get started`;
+      containerApp.style.opacity = 0;
+    }
+
+    time--;
+  }, 1000);
+};
+
+startLogoutTimer();
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
@@ -188,12 +210,25 @@ const nowDate = new Date();
 // const normalDate = nowDate.toDateString();
 // labelDate.textContent = `${normalDate}`;
 
-const nowDay = `${nowDate.getDate()}`.padStart(2, 0);
-const nowMonth = `${nowDate.getMonth() + 1}`.padStart(2, 0);
-const nowYear = nowDate.getFullYear();
-const nowHour = nowDate.getHours();
-const nowMin = nowDate.getMinutes();
-labelDate.textContent = `${nowDay}/${nowMonth}/${nowYear} ${nowHour}:${nowMin}`;
+// const nowDay = `${nowDate.getDate()}`.padStart(2, 0);
+// const nowMonth = `${nowDate.getMonth() + 1}`.padStart(2, 0);
+// const nowYear = nowDate.getFullYear();
+// const nowHour = nowDate.getHours();
+// const nowMin = nowDate.getMinutes();
+// labelDate.textContent = `${nowDay}/${nowMonth}/${nowYear} ${nowHour}:${nowMin}`;
+
+const optionsDate = {
+  hour: 'numeric',
+  minute: 'numeric',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  weekday: 'long',
+};
+
+labelDate.textContent = new Intl.DateTimeFormat('tr-TR', optionsDate).format(
+  nowDate
+);
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -211,9 +246,35 @@ btnLogin.addEventListener('click', function (e) {
     }`;
     containerApp.style.opacity = 100;
 
+    const nowDate = new Date();
+    // const normalDate = nowDate.toDateString();
+    // labelDate.textContent = `${normalDate}`;
+
+    // const nowDay = `${nowDate.getDate()}`.padStart(2, 0);
+    // const nowMonth = `${nowDate.getMonth() + 1}`.padStart(2, 0);
+    // const nowYear = nowDate.getFullYear();
+    // const nowHour = `${nowDate.getHours()}`.padStart(2, 0);
+    // const nowMin = `${nowDate.getMinutes()}`.padStart(2, 0);
+    // labelDate.textContent = `${nowDay}/${nowMonth}/${nowYear} ${nowHour}:${nowMin}`;
+
+    const optionsDate = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      weekday: 'long',
+    };
+
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      optionsDate
+    ).format(nowDate);
+
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+    // startLogoutTimer();
 
     // Update UI
     updateUI(currentAccount);
@@ -383,3 +444,53 @@ future.setFullYear(2036);
 console.log(future);
 
 console.log(new Date(Date.now()));
+
+const optionsNum = {
+  style: 'unit',
+  // currency: 'EUR',
+  unit: 'meter-per-hour',
+  // useGrouping: false,
+};
+
+const testNumber = 12345678.987;
+console.log(
+  'US: ',
+  new Intl.NumberFormat('en-US', optionsNum).format(testNumber)
+);
+console.log(
+  'GB: ',
+  new Intl.NumberFormat('en-GB', optionsNum).format(testNumber)
+);
+console.log(
+  'GER: ',
+  new Intl.NumberFormat('de-DE', optionsNum).format(testNumber)
+);
+console.log(
+  'TUR: ',
+  new Intl.NumberFormat('tr-TR', optionsNum).format(testNumber)
+);
+
+const ingridents = ['pineapple', 'sossige'];
+
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => {
+    console.log(`Your order with ${ing1}, ${ing2} is ready`);
+  },
+  3000,
+  ...ingridents
+);
+
+if (ingridents.includes('pineapple')) clearTimeout(pizzaTimer);
+
+// setInterval(() => {
+//   const date = new Date();
+//   console.log(date);
+// }, 3000);
+
+// setInterval(() => {
+//   const date = new Date();
+//   const sec = date.getSeconds();
+//   const min = date.getMinutes();
+//   const hours = date.getHours();
+//   console.log(`${hours}:${min}:${sec}`);
+// }, 1000);
